@@ -23,5 +23,4 @@ if len(sys.argv) == 2:
 else:
     filename = 'Data\portfolio.csv'
 cost = portfolio_cost(filename)
-
 print(cost)
