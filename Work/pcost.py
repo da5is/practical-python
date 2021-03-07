@@ -3,12 +3,16 @@
 # Exercise 1.27
 
 def portfolio_cost(filename):
+    import csv
     portfolio_cost = 0.0
     with open(filename, 'rt') as f:
-        row = next(f)
-        for line in f:
-            row = line.split(',')
-            name, shares, price = str(row[0]), int(row[1]), float(row[2])
+        csv_f = csv.reader(f)
+        row = next(csv_f)
+        for line in csv_f:
+            try:
+                name, shares, price = str(line[0]), int(line[1]), float(line[2])
+            except ValueError:
+                print('Error reading file ', filename)
             portfolio_cost += shares*price
     return(portfolio_cost)
 
